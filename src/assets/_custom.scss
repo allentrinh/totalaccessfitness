@@ -1,0 +1,44 @@
+body {
+	font-family: $font1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font1;
+}
+
+.button {
+  position: relative;
+  color: #fff;
+  background: $primaryColor;
+  border: 0;
+  border-radius: 20px;
+  padding: 1.25rem 1.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+  @include transition(all, .3s, cubic-bezier(.25,.8,.25,1));
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: darken($primaryColor, 10%);
+    border-radius: 20px;
+    transform: scale(0);
+  }
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+    top: -1px;
+    &::before {
+      animation: pulse .4s ease-in-out;
+    }
+  }
+  &:active {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 1px 2px rgba(0, 0, 0, .24);
+    top: 0;
+    background: darken($primaryColor, 10%);
+  }
+  span {
+    position: relative;
+  }
+}
