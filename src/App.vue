@@ -2,12 +2,16 @@
   <div id="app" :class="{ 'navigation-open': $store.state.navActive }">
     <HeaderComponent/>
     <main id="content">
-      <transition name="router-animation" mode="out-in" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" :duration="200">
+      <transition name="router-animation"
+        mode="out-in"
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+        duration="200">
         <router-view/>
       </transition>
     </main>
     <FooterComponent/>
-    <!-- <NavigationComponent/> -->
+    <NavigationComponent/>
   </div>
 </template>
 
@@ -26,9 +30,13 @@ export default {
   watch: {
     $route(to, from) {
       // Add function to update meta data
-      console.log(to)
-      console.log(from)
-    }
-  }
+      this.$store.commit('closeNav');
+      console.log(to);
+      console.log(from);
+    },
+  },
 };
 </script>
+
+<style>
+</style>

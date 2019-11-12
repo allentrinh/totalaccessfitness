@@ -14,12 +14,12 @@ export default new Router({
       metaTags: [
         {
           name: 'description',
-          content: 'The home page of our example app.'
+          content: 'The home page of our example app.',
         },
         {
           property: 'og:description',
-          content: 'The home page of our example app.'
-        }
+          content: 'The home page of our example app.',
+        },
       ],
       component: Home,
     },
@@ -29,12 +29,12 @@ export default new Router({
       metaTags: [
         {
           name: 'description',
-          content: 'The home page of our example app.'
+          content: 'The home page of our example app.',
         },
         {
           property: 'og:description',
-          content: 'The home page of our example app.'
-        }
+          content: 'The home page of our example app.',
+        },
       ],
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route

@@ -8,13 +8,12 @@
 
 <script>
 export default {
-  name: 'NavigationButton',
-
-}
+  name: 'NavigationButtonComponent',
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/_variables.scss';
+@import '@/assets/scss/styles.scss';
 
 .toggle-navigation {
   background: transparent;
@@ -29,6 +28,8 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  @include transition;
+  @include box-shadow;
   &:hover {
     span {
       &:nth-child(1) {
