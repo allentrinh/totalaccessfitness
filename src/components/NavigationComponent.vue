@@ -3,9 +3,10 @@
     <div class="container is-narrow">
       <div class="columns">
         <div class="column">
-          <ul class="nav">
-            <li v-for="(route, index) in routes" :key="index">
-              <router-link class="nav-link" :to="route.path">
+          <button class="navigation__link navigation__link--hidden" aria-hidden="true"></button>
+          <ul class="navigation__list">
+            <li class="navigation__list-item" v-for="(route, index) in routes" :key="index">
+              <router-link class="navigation__link" :to="route.path">
                 <span>{{ route.name | capitalize }}</span>
               </router-link>
             </li>
@@ -14,10 +15,18 @@
         <div class="column is-vbottom contact-column">
           <SocialListComponent/>
           <div class="contact">
-            <h4 class="contact-heading">Contact Us</h4>
-            <ul class="contact-links">
-              <li><a :href="`mailto:${$store.state.email}`" class="contact-link email">{{ $store.state.email }}</a></li>
-              <li><a :href="`tel:${$store.state.telephone}`" class="contact-link phone">{{ $store.getters.formattedTelephone }}</a></li>
+            <h4 class="contact__heading">Contact Us</h4>
+            <ul class="contact__links">
+              <li class="contact__list-item">
+                <a :href="`mailto:${$store.state.email}`" class="contact__link contact__link--email">
+                  {{ $store.state.email }}
+                </a>
+              </li>
+              <li class="contact__list-item">
+                <a :href="`tel:${$store.state.telephone}`" class="contact__link">
+                  {{ $store.getters.formattedTelephone }}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -60,26 +69,26 @@ export default {
   .navigation {
     opacity: 1;
     transform: translateX(0);
-  }
-  .nav-link {
-    animation-name: fadeInLeft;
-    animation-duration: .2s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-  }
-  .nav {
-    @for $i from 1 through 4 {
-      $delay: $i * .15;
-      li:nth-child(#{$i}) {
-        .nav-link {
-          animation-delay: #{$delay}s;
+    &__list {
+      @for $i from 1 through 5 {
+        $delay: $i * .15;
+        li:nth-child(#{$i}) {
+          .navigation__link {
+            animation-delay: #{$delay}s;
+          }
         }
       }
+    }
+    &__link {
+      animation-name: fadeInLeft;
+      animation-duration: .2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
     }
   }
   .social {
     @for $i from 1 through 3 {
-    $delays: .9s, 1.05s, 1.2s;
+    $delays: 1.05s, 1.2s, 1.35s;
       li:nth-child(#{$i}) {
         animation-delay: nth($delays, $i);
       }
@@ -91,27 +100,29 @@ export default {
       animation-fill-mode: forwards;
     }
   }
-  .contact-heading {
-    animation-name: fadeInRight;
-    animation-duration: .2s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-    animation-delay: 1.35s;
-  }
-  .contact-link {
-    animation-name: fadeInRight;
-    animation-duration: .2s;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-  }
-  .contact-links {
-    $delays: 1.5s, 1.65s;
-    @for $i from 1 through 2 {
-      li:nth-child(#{$i}) {
-        .contact-link {
-          animation-delay: nth($delays, $i);
+  .contact {
+    &__heading {
+      animation-name: fadeInRight;
+      animation-duration: .2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+      animation-delay: 1.5s;
+    }
+    &__links {
+      $delays: 1.65s, 1.8s;
+      @for $i from 1 through 2 {
+        li:nth-child(#{$i}) {
+          .contact__link {
+            animation-delay: nth($delays, $i);
+          }
         }
       }
+    }
+    &__link {
+      animation-name: fadeInRight;
+      animation-duration: .2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
     }
   }
 }
@@ -130,62 +141,59 @@ export default {
   transform: translateX(-100%);
   opacity: .5;
   @include transition(transform, .3s, cubic-bezier(.25, .8, .25, 1));
-}
-
-.nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-left: 3rem;
-  @media (min-width: $screen-sm) {
-    padding-left: 4rem;
-  }
-}
-
-.nav-link {
-  font-size: 2rem;
-  color: #fff;
-  padding: 2rem 0;
-  display: inline-block;
-  font-weight: 700;
-  font-style: italic;
-  letter-spacing: 1px;
-  opacity: 0;
-  position: relative;
-  &:hover {
-    color: #fff;
-    &:before {
-      opacity: 1;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 3rem;
+    @media (min-width: $screen-sm) {
+      padding-left: 4rem;
     }
   }
-  &::before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 20%;
-    background: darken($primaryColor, 20%);
-    position: absolute;
-    bottom: 2rem;
-    left: 0;
+  &__link {
+    font-size: 2rem;
+    color: #fff;
+    padding: 2rem 0;
+    display: inline-block;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 1px;
     opacity: 0;
-    @include transition;
-  }
-  @media (min-width: $screen-sm) {
-    font-size: 3rem;
-  }
-  span {
     position: relative;
+    &:hover,
+    &:focus  {
+      color: #fff;
+      outline: 0;
+      &:before {
+        opacity: 1;
+      }
+    }
+    &::before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 20%;
+      background: darken($primaryColor, 20%);
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      opacity: 0;
+      @include transition;
+    }
+    &--hidden {
+      opacity: 0;
+      border: 0;
+      height: 0;
+      width: 0;
+      padding: 0;
+    }
+    @media (min-width: $screen-sm) {
+      font-size: 3rem;
+    }
+    span {
+      position: relative;
+    }
   }
-}
-
-.close {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  color: #fff;
-  font-size: 2rem;
-  background: transparent;
-  border: 0;
 }
 
 .contact-column {
@@ -217,30 +225,31 @@ export default {
   }
 }
 
-.contact-heading {
-  text-transform: uppercase;
-  color: #111;
-  font-weight: 700;
-  font-family: $font1;
-  letter-spacing: 2px;
-  opacity: 0;
-  padding-left: 3rem;
-  @media (min-width: $screen-sm) {
-    text-align: right;
+.contact {
+  &__heading {
+    text-transform: uppercase;
+    color: #111;
+    font-weight: 700;
+    font-family: $font1;
+    letter-spacing: 2px;
+    opacity: 0;
+    padding-left: 3rem;
+    @media (min-width: $screen-sm) {
+      text-align: right;
+    }
   }
-}
-
-.contact-links {
-  list-style: none;
-  margin: 0;
-  padding-left: 3rem;
-  @media (min-width: $screen-sm) {
-    text-align: right;
+  &__links {
+    list-style: none;
+    margin: 0;
+    padding-left: 3rem;
+    @media (min-width: $screen-sm) {
+      text-align: right;
+    }
   }
-  li {
+  &__list-item {
     list-style: none;
   }
-  .contact-link {
+  &__link {
     color: #111;
     font-family: $font1;
     font-weight: 700;
@@ -248,7 +257,7 @@ export default {
     letter-spacing: 1px;
     opacity: 0;
     display: inline-block;
-    &.email {
+    &--email {
       position: relative;
       overflow: hidden;
       &::after {

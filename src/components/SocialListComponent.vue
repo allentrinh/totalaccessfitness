@@ -1,7 +1,7 @@
 <template>
   <ul class="social">
-    <li v-for="(link, key) in $store.state.socialLinks" :key="key">
-      <a :href="link.link" :title="link.title" target="_blank"><i class="fa" :class="link.icon"></i></a>
+    <li class="social__list-item" v-for="(link, key) in $store.state.socialLinks" :key="key">
+      <a :href="link.link" :title="link.title" class="social__link" target="_blank"><i class="fa" :class="link.icon"></i></a>
     </li>
   </ul>
 </template>
@@ -16,10 +16,10 @@ export default {
 @import '@/assets/scss/styles.scss';
 
 .social {
-  li {
+  &__list-item {
     list-style: none;
   }
-  a {
+  &__link {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,9 +30,14 @@ export default {
     border: 1px solid #fff;
     margin-bottom: 1rem;
     @include transition;
-    &:hover {
+    &:hover,
+    &:focus {
       background: $primaryColor;
       border-color: $primaryColor;
+    }
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 5px $complementaryColor;
     }
   }
 }

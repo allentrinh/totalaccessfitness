@@ -3,13 +3,13 @@
     <div class="container">
       <div class="columns is-vcentered is-mobile">
         <div class="column">
-          <router-link to="/" class="logo">
+          <router-link to="/" class="header__logo">
             <img :src="require(`@/assets/logo.png`)" :alt="$store.state.title + ' Logo'" @click="$store.commit('closeNav')" />
           </router-link>
         </div>
         <div class="column has-text-right">
-          <div class="header-actions">
-            <a :href="$store.state.joinUrl" class="join-today button" target="_blank">
+          <div class="header__actions">
+            <a :href="$store.state.joinUrl" class="header__join-today button" target="_blank">
               <span>Join today!</span>
             </a>
             <NavigationButtonComponent/>
@@ -38,11 +38,11 @@ export default {
       const top = window.scrollY;
       const header = this.$el;
       if (top < this.currentTop) {
-        header.classList.add('stickify');
+        header.classList.add('header--stickify');
       } else {
-        header.classList.remove('stickify');
-        header.classList.add('animate-out');
-        setTimeout(() => header.classList.remove('animate-out'), 300);
+        header.classList.remove('header--stickify');
+        header.classList.add('header--animate-out');
+        setTimeout(() => header.classList.remove('header--animate-out'), 300);
       }
       this.currentTop = top;
     },
@@ -85,34 +85,27 @@ export default {
   padding: .75rem;
   z-index: 9999;
   @include transition;
-  &.stickify {
+  &--stickify {
     position: fixed;
     top: auto;
     bottom: 100%;
     transform: translateY(100%);
   }
-  &.animate-out {
+  &--animate-out {
     position: fixed;
     top: auto;
     bottom: 100%;
     transform: translateY(0);
   }
-}
-
-.logo {
-  display: inline-block;
-  width: 150px;
-  line-height: 0;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.join-today {
-  font-family: $font1;
-  font-style: italic;
+  &__logo {
+    display: inline-block;
+    width: 150px;
+    line-height: 0;
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 </style>

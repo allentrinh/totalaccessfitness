@@ -15,6 +15,7 @@ export default new Vuex.Store({
     state: 'Virginia',
     zip: '23464',
     telephone: '7577697652',
+    massagePhone: '7576920675',
     lat: '36.770351',
     lng: '-76.189638',
     email: 'info@totalaccessfitness.com',
@@ -70,9 +71,25 @@ export default new Vuex.Store({
   mutations: {
     toggleNav(state) {
       state.navActive = !state.navActive;
+      if (state.navActive) {
+        const navigationLink = document.querySelector('.navigation__link');
+        navigationLink.focus();
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            this.commit('closeNav');
+          }
+        });
+      }
     },
     closeNav(state) {
       state.navActive = false;
+
+      document.removeEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          this.commit('closeNav');
+        }
+      });
     },
   },
   getters: {

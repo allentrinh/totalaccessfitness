@@ -1,8 +1,8 @@
 <template>
-  <button @click="$store.commit('toggleNav')" class="toggle-navigation">
-    <span></span>
-    <span></span>
-    <span></span>
+  <button @click="$store.commit('toggleNav')" class="toggle-navigation" title="Toggle navigation button" aria-label="Toggle navigation button">
+    <span class="toggle-navigation__span"></span>
+    <span class="toggle-navigation__span"></span>
+    <span class="toggle-navigation__span"></span>
   </button>
 </template>
 
@@ -31,7 +31,7 @@ export default {
   @include transition;
   @include box-shadow;
   &:hover {
-    span {
+    .toggle-navigation__span {
       &:nth-child(1) {
         transform: translateY(-1px);
       }
@@ -40,7 +40,7 @@ export default {
       }
     }
   }
-  span {
+  &__span {
     display: block;
     background: #000;
     width: 20px;

@@ -1,6 +1,11 @@
+html {
+  font-size: 16px;
+}
+
 body {
 	font-family: $font1;
   font-weight: 400;
+  color: #383838;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -15,6 +20,9 @@ h1, h2, h3, h4, h5, h6 {
   border: 0;
   border-radius: 20px;
   padding: 1.25rem 1.75rem;
+  margin: 0;
+  font-style: italic;
+  font-family: $font1;
   @include box-shadow;
   @include transition;
   &::before {
@@ -24,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
     right: 0;
     bottom: 0;
     left: 0;
-    background: darken($primaryColor, 10%);
+    background: darken($primaryColor, 10);
     border-radius: 20px;
     transform: scale(0);
   }
@@ -40,7 +48,49 @@ h1, h2, h3, h4, h5, h6 {
   }
   &:active {
     top: 0;
-    background: darken($primaryColor, 10%);
+    background: darken($primaryColor, 10);
+    outline: 0;
+    box-shadow: none;
+  }
+  &--ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    margin-bottom: 1rem;
+    &::before {
+      display: none;
+    }
+    &:hover {
+      top: 0;
+      color: #fff;
+      background: $primaryColor;
+      border-color: $primaryColor;
+    }
+    &:active {
+      top: 0;
+      background: #fff;
+      color: #fff;
+    }
+  }
+  &--alt {
+    background: $complementaryColor;
+    &::before {
+      background: darken($complementaryColor, 10  );
+    }
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 5px darken($primaryColor, 10);
+    }
+    &:hover {
+      top: -1px;
+      &::before {
+        animation: pulse .4s ease-in-out;
+      }
+    }
+    &:active {
+      top: 0;
+      background: darken($complementaryColor, 10);
+    }
   }
   span {
     position: relative;

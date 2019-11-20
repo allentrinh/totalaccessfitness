@@ -43,6 +43,14 @@ export default new Router({
 
     },
     {
+      path: '/trainers',
+      name: 'trainers',
+      // route level code-splitting
+      // this generates a separate chunk (location.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "location" */ './views/Trainers.vue'),
+    },
+    {
       path: '/location',
       name: 'location',
       // route level code-splitting
@@ -59,4 +67,7 @@ export default new Router({
       component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue'),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  },
 });
