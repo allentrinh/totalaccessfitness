@@ -76,6 +76,11 @@ export default {
       }
       &__link {
         margin-bottom: 0;
+        margin-right: 0;
+        background-color: transparent;
+        &:hover {
+          color: #fff ;
+        }
       }
     }
   }

@@ -50,15 +50,15 @@ export default {
   created() {
     window.addEventListener('scroll', this.stickifyHeader, {
       capture: true,
-      passive: true
+      passive: true,
     });
   },
   destroyed() {
     window.removeEventListener('scroll', this.stickifyHeader, {
       capture: true,
-      passive: true
+      passive: true,
     });
-  }
+  },
 };
 </script>
 

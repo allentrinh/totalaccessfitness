@@ -9,6 +9,7 @@ export default new Vuex.Store({
     joinUrl: 'http://totalaccessfitness.thememberspot.com/',
     virtualTour: 'https://my.matterport.com/show/?m=hvUeWaxrXpU',
     googleAnalytics: 'UA-57099316-1',
+    directionsLink: 'https://goo.gl/maps/7tBipmfUpVK2eqza8',
     address: '5705 Lynnhaven Pkwy',
     suite: '105',
     city: 'Virginia Beach',
@@ -93,13 +94,10 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    formattedTelephone: (state, getters) => {
+    formattedTelephone(state, getters) {
       const original = state.telephone;
       const match = original.match(/^(\d{3})(\d{3})(\d{4})$/);
       return `${match[1]}.${match[2]}.${match[3]}`;
     },
-  },
-  actions: {
-
   },
 });

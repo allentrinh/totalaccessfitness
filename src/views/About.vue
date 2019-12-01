@@ -17,7 +17,7 @@
           <div class="column is-9">
             <p class="about__body">Established in 2014, we have strived to provide our city of <em class="about__em">Virginia Beach, VA</em> a better fitness experience. One that doesn't place limits. One that continues to grow with our members. We believe that health and fitness is essential to reaching any individual's full potential in every aspect of their lives, and we love hearing the success stories that our members bring us when they reach new peaks!</p>
             <p class="about__body">Since opening our doors in our humble first location near the Virginia Beach Court Houses, we have moved and expanded our establishment to <em class="about__em">5,465 square feet</em> to meet the needs of our evergrowing community. You can find all the cardio, strength, and functional training equipment you need to reach your goals and keep you on track!</p>
-            <a :href="$store.state.joinUrl" class="button" target="_blank"><span>Become a TAFlete today!</span></a>
+            <a :href="$store.state.joinUrl" class="button" target="_blank"><span>Become a member today!</span></a>
           </div>
         </div>
       </div>
@@ -46,10 +46,12 @@
       <div class="container">
         <div class="columns">
           <div class="column is-6 is-offset-3 has-text-centered">
-            <h2 class="mission__heading">Our Mission</h2>
-            <p class="mission__body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas eum, facilis. Doloremque magni eos quae eum aliquid, est illum pariatur, tenetur molestias, perspiciatis consectetur voluptate alias vel facere ab eveniet.</p>
-            <router-link to="location" class="button mission__button"><span>Check out our location</span></router-link>
-            <a :href="$store.state.joinUrl" class="button button--alt mission__button" target="_blank"><span>See our current specials!</span></a>
+            <div class="mission__content">
+              <h2 class="mission__heading">Our Mission</h2>
+              <p class="mission__body">To provide a genuine and supportive atmosphere to help you reach your fitness goals without the gimmicks of big corporate enterprises. We strive to keep our club clean, functioning, and open 24 hours a day, 7 days a week, holidays included!</p>
+              <router-link to="location" class="button mission__button"><span>Check out our location</span></router-link>
+              <a :href="$store.state.joinUrl" class="button button--alt mission__button" target="_blank"><span>See our current specials!</span></a>
+            </div>
           </div>
         </div>
       </div>
@@ -96,6 +98,7 @@ export default {
     font-size: 1.25rem;
     line-height: 2;
     margin-bottom: 1rem;
+    font-style: italic;
   }
   &__em {
     font-style: italic;
@@ -113,7 +116,7 @@ export default {
     font-weight: 700;
     color: $primaryColor;
     letter-spacing: 1px;
-    padding-right: 1rem;
+    padding-right: .75rem;
   }
 }
 
@@ -127,13 +130,21 @@ export default {
 
 .mission {
   padding: 16rem 4rem;
-  background: darken($primaryColor, 5);
+  background: $slate;
+  @include overlay;
   &__heading {
     font-family: $font2;
     letter-spacing: 3px;
+    color: #fff;
+  }
+  &__content {
+    position: relative;
+    z-index: 3;
   }
   &__body {
     font-size: 1.25rem;
+    font-style: italic;
+    color: #fff;
   }
   &__button {
     margin: 0 .5rem 1rem;

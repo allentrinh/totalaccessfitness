@@ -17,6 +17,7 @@
 }
 
 @mixin overlay {
+  position: relative;
   &::after {
     content: '';
     position: absolute;

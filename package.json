@@ -25,6 +25,7 @@
     "font-awesome": "^4.7.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
+    "vue-gallery": "^2.0.1",
     "vue-template-compiler": "^2.6.10"
   }
 }

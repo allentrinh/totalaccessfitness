@@ -174,6 +174,7 @@ export default {
   }
   &__body {
     font-size: 1.25rem;
+    font-style: italic;
   }
 }
 

@@ -5,12 +5,24 @@ html {
 body {
 	font-family: $font1;
   font-weight: 400;
-  color: #383838;
+  color: $black;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font1;
-  font-weight: 400;
+  font-family: $font2;
+  letter-spacing: 3px;
+  font-weight: 400 !important;
+}
+
+h2 {
+  line-height: 1.5;
+}
+
+a {
+  color: $primaryColor;
+  &:hover {
+    color: lighten($primaryColor, 10);
+  }
 }
 
 .button {
@@ -42,6 +54,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   &:hover {
     top: -1px;
+    color: #fff;
     &::before {
       animation: pulse .4s ease-in-out;
     }

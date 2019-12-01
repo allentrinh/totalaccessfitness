@@ -72,7 +72,6 @@ export default {
 @import '@/assets/scss/styles.scss';
 
 .hero {
-  position: relative;
   padding-top: 93px;
   overflow: hidden;
   height: 70vh;
