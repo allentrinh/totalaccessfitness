@@ -6,9 +6,7 @@
           <router-link to="/" class="footer__logo">
             <img :src="require(`@/assets/logo.png`)" :alt="$store.state.title + ' Logo'" />
           </router-link>
-          <div class="footer__social">
-            <SocialListComponent/>
-          </div>
+          <SocialListComponent modifier="footer"/>
         </div>
         <div class="column is-3 has-text-right-tablet">
           <router-link to="contact" class="button button--ghost footer__button">Contact</router-link>
@@ -60,29 +58,6 @@ export default {
   }
   &__copyright {
     color: #fff;
-  }
-  &__social {
-    .social {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      @media (min-width: $screen-sm) {
-        justify-content: flex-start;
-      }
-      &__list-item {
-        + li {
-          margin-left: .85rem;
-        }
-      }
-      &__link {
-        margin-bottom: 0;
-        margin-right: 0;
-        background-color: transparent;
-        &:hover {
-          color: #fff ;
-        }
-      }
-    }
   }
 }
 </style>

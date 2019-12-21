@@ -10,11 +10,19 @@
           <h2 class="subtitle hero__subtitle">
             {{ img.subtitle }}
           </h2>
+          <ul class="hero__list" v-if="isHome">
+            <li class="hero__list-item">
+              <a :href="$store.state.joinUrl" class="button hero__button"><span>See our online specials!</span></a>
+            </li>
+            <li class="hero__list-item">
+              <router-link to="contact" class="button button--alt hero__button"><span>Contact Us</span></router-link>
+            </li>
+          </ul>
         </div>
-        <SocialListComponent v-if="isHome" />
+        <SocialListComponent v-if="isHome" modifier="hero" />
       </div>
     </div>
-    <button class="hero__button" @click="autoScroll()">
+    <button class="hero__mouse" @click="autoScroll()">
       <i class="fas fa-mouse"></i>
       Find out more
     </button>
@@ -78,6 +86,7 @@ export default {
   min-height: 500px;
   @include overlay;
   &--kenburns {
+    height: 100vh;
     .hero__wrapper--active {
       .hero__image {
         animation: kenburns 50s infinite;
@@ -157,7 +166,20 @@ export default {
     font-family: $font1;
     font-weight: 300;
   }
+  &__list {
+    margin: 0 -.75rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  &__list-item {
+    list-style: none;
+    padding: 0 .75rem;
+  }
   &__button {
+
+  }
+  &__mouse {
     position: absolute;
     bottom: 3rem;
     left: 50%;
@@ -181,18 +203,6 @@ export default {
     &:hover {
       opacity: 1;
     }
-  }
-}
-
-.social {
-  position: absolute;
-  z-index: 9;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 3rem;
-  display: none;
-  @media (min-width: $screen-lg) {
-    display: block;
   }
 }
 </style>

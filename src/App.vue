@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="{ 'navigation-open': $store.state.navActive }">
-    <HeaderComponent/>
+    <HeaderComponent v-if="$route.name != '404'" />
     <main id="content">
       <transition name="router-animation"
         mode="out-in"
@@ -10,8 +10,8 @@
         <router-view/>
       </transition>
     </main>
-    <FooterComponent/>
-    <NavigationComponent/>
+    <FooterComponent v-if="$route.name != '404'"/>
+    <NavigationComponent v-if="$route.name != '404'"/>
   </div>
 </template>
 
@@ -27,12 +27,47 @@ export default {
     FooterComponent,
     NavigationComponent,
   },
+  methods: {
+    resetMeta() {
+      const types = [
+        'description',
+        'og:title',
+        'og:description',
+        'og:type ',
+        'og:url',
+      ];
+
+      types.forEach(type => {
+        const meta = document.querySelector('meta[name="' + type + '"]');
+        if (meta) {
+          meta.parentNode.removeChild(meta);
+        }
+      });
+    },
+    updateMeta(meta) {
+      for (const key in meta) {
+        if (meta[key].name === 'title') {
+          document.title = meta[key].content;
+        } else {
+          const m = document.createElement('meta');
+          m.name = meta[key].name;
+          m.content = meta[key].content;
+
+          const referenceNode = document.querySelector('link[rel="icon"]');
+          referenceNode.parentNode.insertBefore(m, referenceNode);
+        }
+      }
+    },
+  },
+  mounted() {
+    this.resetMeta();
+    this.updateMeta(this.$route.meta);
+  },
   watch: {
     $route(to, from) {
-      // Add function to update meta data
       this.$store.commit('closeNav');
-      console.log(to);
-      console.log(from);
+      this.resetMeta();
+      this.updateMeta(to.meta);
     },
   },
 };
@@ -40,4 +75,4 @@ export default {
 
 <style>
 @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
-</style>
+</style>'',

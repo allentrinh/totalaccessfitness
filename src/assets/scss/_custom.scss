@@ -84,6 +84,13 @@ a {
       background: #fff;
       color: #fff;
     }
+    &:focus,
+    &:focus:not(:active) {
+      outline: 0;
+      background: $primaryColor;
+      color: #fff;
+      box-shadow: 0 0 0 5px $complementaryColor;
+    }
   }
   &--alt {
     background: $complementaryColor;

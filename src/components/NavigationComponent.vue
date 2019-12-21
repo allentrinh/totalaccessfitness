@@ -5,7 +5,7 @@
         <div class="column">
           <button class="navigation__link navigation__link--hidden" aria-hidden="true"></button>
           <ul class="navigation__list">
-            <li class="navigation__list-item" v-for="(route, index) in routes" :key="index">
+            <li class="navigation__list-item" v-for="(route, index) in routes" :key="index" v-if="route.name != '404'">
               <router-link class="navigation__link" :to="route.path">
                 <span>{{ route.name | capitalize }}</span>
               </router-link>
@@ -13,7 +13,7 @@
           </ul>
         </div>
         <div class="column is-vbottom contact-column">
-          <SocialListComponent/>
+          <SocialListComponent modifier="navigation"/>
           <div class="contact">
             <h4 class="contact__heading">Contact Us</h4>
             <ul class="contact__links">
@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/scss/styles.scss';
 
 .container.is-narrow {
@@ -69,32 +69,16 @@ export default {
   .navigation {
     opacity: 1;
     transform: translateX(0);
-    &__list {
-      @for $i from 1 through 5 {
-        $delay: $i * .15;
-        li:nth-child(#{$i}) {
-          .navigation__link {
-            animation-delay: #{$delay}s;
-          }
+    @for $i from 1 through 5 {
+      $delay: $i * .15;
+      &__list-item:nth-child(#{$i}) {
+        .navigation__link {
+          animation-delay: #{$delay}s;
         }
       }
     }
     &__link {
       animation-name: fadeInLeft;
-      animation-duration: .2s;
-      animation-timing-function: ease-in-out;
-      animation-fill-mode: forwards;
-    }
-  }
-  .social {
-    @for $i from 1 through 3 {
-    $delays: 1.05s, 1.2s, 1.35s;
-      li:nth-child(#{$i}) {
-        animation-delay: nth($delays, $i);
-      }
-    }
-    li {
-      animation-name: fadeInRight;
       animation-duration: .2s;
       animation-timing-function: ease-in-out;
       animation-fill-mode: forwards;
@@ -207,22 +191,6 @@ export default {
     justify-content: space-between;
     padding-right: 4rem;
   }
-  .social {
-    display: none;
-    margin-top: 3rem;
-    @media (min-width: $screen-sm) {
-      display: block;
-    }
-    li {
-      opacity: 0;
-    }
-    a {
-      &:hover {
-        color: $primaryColor;
-        background: #fff;
-      }
-    }
-  }
 }
 
 .contact {
@@ -257,6 +225,9 @@ export default {
     letter-spacing: 1px;
     opacity: 0;
     display: inline-block;
+    &:hover {
+      color: #111;
+    }
     &--email {
       position: relative;
       overflow: hidden;

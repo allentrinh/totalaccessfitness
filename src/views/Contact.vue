@@ -31,7 +31,7 @@
                   <h2 class="details__label">Follow us</h2>
                 </div>
                 <div class="column">
-                  <SocialListComponent/>
+                  <SocialListComponent modifier="contact"/>
                 </div>
               </div>
               <div class="columns">
@@ -99,6 +99,11 @@ export default {
 
 .intro {
   &__body {
+    font-size: 1.25rem;
+    line-height: 2;
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto 1rem;
     &::after {
       content: '';
       display: block;
@@ -130,17 +135,6 @@ export default {
   }
   &__link {
     text-decoration: underline;
-  }
-}
-
-.social {
-  &__list-item {
-    display: inline-block;
-  }
-  &__link {
-    margin-bottom   : 0 !important;
-    background: $slate;
-    margin-right: 1rem;
   }
 }
 </style>

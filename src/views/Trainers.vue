@@ -145,6 +145,7 @@ export default {
 @import '@/assets/scss/styles.scss';
 
 .intro {
+  padding: 0;
   font-size: 1.25rem;
   line-height: 2;
   margin-bottom: 1rem;
@@ -214,6 +215,7 @@ export default {
     border-radius: 50%;
     @include transition;
     &:hover {
+      color: #fff;
       background: lighten($slate, 10);
     }
     &:focus {

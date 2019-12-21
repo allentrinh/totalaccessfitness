@@ -1,6 +1,7 @@
 <template>
   <div id="home">
     <HeroComponent :images="heroImages"/>
+    <!--
     <section class="section team-taf">
       <div class="container">
         <div class="columns is-vcentered">
@@ -16,6 +17,7 @@
         </div>
       </div>
     </section>
+    -->
     <section class="home">
       <div class="home__content">
         <div class="columns is-gapless home__columns">
