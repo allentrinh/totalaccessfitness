@@ -66,8 +66,15 @@
                   </p>
                 </div>
               </div>
+              <div class="columns">
+                <div class="column is-4">
+                  <h2 class="details__label">Email Us</h2>
+                </div>
+                <div class="column">
+                  <a :href="`mailto:${$store.state.email}`" class="details__link">{{ $store.state.email }}</a>
+                </div>
+              </div>
             </div>
-            <ContactFormComponent/>
           </div>
         </div>
       </div>
@@ -78,7 +85,6 @@
 <script>
 import HeroComponent from '@/components/HeroComponent.vue';
 import SocialListComponent from '@/components/SocialListComponent.vue';
-import ContactFormComponent from '@/components/ContactFormComponent.vue';
 
 export default {
   name: 'Contact',

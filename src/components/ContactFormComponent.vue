@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <form method="post" action="contact" @click="this.logEvent('click', 'Contact Form Submit')" name="contact" class="form__form" netlify-honeypot="bot-field">
+    <form @submit="handleSubmit" name="contact" class="form__form" netlify netlify-honeypot="bot-field">
       <input type="hidden" name="bot-field">
       <fieldset>
         <div class="field">
@@ -12,24 +12,25 @@
               name="name"
               id="name"
               class="input form__input"
-              placeholder="ex. John Smith">
+              placeholder="ex. John Smith"
+              v-model="form.name">
           </div>
         </div>
         <div class="field">
           <label for="email" class="label form__label">Email</label>
           <div class="control">
-            <input type="email" name="email" id="email" class="input form__input" placeholder="ex. hello@email.com">
+            <input type="email" name="email" id="email" class="input form__input" placeholder="ex. hello@email.com" v-model="form.email">
           </div>
         </div>
         <div class="field">
           <label for="message" class="label form__label">How can we help?</label>
           <div class="control">
-            <textarea name="message" id="message" class="textarea form__textarea"></textarea>
+            <textarea name="message" id="message" class="textarea form__textarea" v-model="form.message"></textarea>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <button class="button form__button"><span>Submit</span></button>
+            <button class="button form__button" @click="this.logEvent('click', 'Contact Form Submit')"><span>Submit</span></button>
           </div>
         </div>
       </fieldset>
@@ -42,31 +43,27 @@ export default {
   name: 'ContactFormComponent',
   data() {
     return {
-      formFields: {
-        name: {
-          value: '',
-          isFilled: false,
-        },
-        email: {
-          value: '',
-          valid: true,
-          isFilled: false,
-        },
-        message: {
-          value: '',
-          maxLength: 255,
-          isFilled: false,
-        },
+      form: {
+        name: '',
+        email: '',
+        message: '',
       },
     };
   },
   methods: {
-    validateField(field) {
-      field.isFilled = field.value.length > 0;
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join('&');
     },
-    validateEmail() {
-      const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      this.formFields.email.valid = re.test(String(this.formFields.email.value).toLowerCase());
+    handleSubmit() {
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({ 'form-name': 'contact', ...this.form }),
+      });
     },
   },
 };

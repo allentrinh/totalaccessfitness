@@ -137,7 +137,7 @@ export default {
   &__link {
     font-size: 2rem;
     color: #fff;
-    padding: 2rem 0;
+    padding: .5rem 0;
     display: inline-block;
     font-weight: 700;
     font-style: italic;
@@ -172,6 +172,7 @@ export default {
       padding: 0;
     }
     @media (min-width: $screen-sm) {
+      padding: 2rem 0;
       font-size: 3rem;
     }
     span {
