@@ -12,10 +12,10 @@
           </h2>
           <ul class="hero__list" v-if="isHome">
             <li class="hero__list-item">
-              <a :href="$store.state.joinUrl" class="button hero__button"><span>See our online specials!</span></a>
+              <a :href="$store.state.joinUrl" @click="this.logEvent('click', 'Home Hero Specials')" class="button hero__button"><span>See our online specials!</span></a>
             </li>
             <li class="hero__list-item">
-              <router-link to="contact" class="button button--alt hero__button"><span>Contact Us</span></router-link>
+              <router-link to="contact" @click="this.logEvent('click', 'Home Hero Contact Us')" class="button button--alt hero__button"><span>Contact Us</span></router-link>
             </li>
           </ul>
         </div>

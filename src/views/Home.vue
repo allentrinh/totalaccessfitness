@@ -29,8 +29,8 @@
           <div class="column is-6 is-offset-1 content home__column">
             <div class="home__inner-content">
               <p class="home__body">Total Access Fitness is unlike any other gym. We’re a community. Our facility offers true 24 hour access -- rain or shine, our doors are always open to our members. Free WiFi included!</p>
-              <p class="home__em">Membership plans start at $29.99</p>
-              <a :href="$store.state.joinUrl" class="button" target="_blank"><span>See our specials!</span></a>
+              <p class="home__em">Membership plans start at $29.99/<small class="home__small">month</small></p>
+              <a :href="$store.state.joinUrl" @click="this.logEvent('click', 'Home Content Specials')" class="button" target="_blank"><span>See our specials!</span></a>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@
           <div class="column is-6 is-offset-1 content home__column">
             <div class="home__inner-content">
               <p class="home__body">It's not a gym without plenty of cardio equipment! Challenge your heart with spin bikes, treadmills, arc trainers, ellipticals, and more!</p>
-              <a :href="$store.state.virtualTour" class="button" target="_blank"><span><i class="fa fa-video-camera"></i> Explore the Virtual Tour!</span></a>
+              <a :href="$store.state.virtualTour" @click="this.logEvent('click', 'Home Content Virtual Tour')" class="button" target="_blank"><span><i class="fa fa-video-camera"></i> Explore the Virtual Tour!</span></a>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
           <div class="column is-6 is-offset-1 content home__column">
             <div class="home__inner-content">
               <p class="home__body">We love our equipment, We think you will too! We perform maintenance on our equipment daily to make sure you never have to wait or fuss with broken equipment!</p>
-              <router-link to="location" class="button"><span>View more photos!</span></router-link>
+              <router-link to="location" @click="this.logEvent('click', 'Home Content View Photos')" class="button"><span>View more photos!</span></router-link>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
             <div class="home__inner-content">
               <p class="home__body">Training doesn't come without it's hurdles. Sometimes muscle soreness hurts! That's why we offer an in-house massage therapist who knows the human body as well as you know the weights! Find out why our members are ahead of the curve in their fitness journey. Not a member? No worries! Kelly is available to help you, athlete or not!</p>
               <p class="home__em">1 hour sessions - $35 for members!</p>
-              <a :href="`tel:${$store.state.massagePhone}`" class="button"><span>Book Kelly!</span></a>
+              <a :href="`tel:${$store.state.massagePhone}`" @click="this.logEvent('click', 'Home Content Book Kelly')" class="button"><span>Book Kelly!</span></a>
             </div>
           </div>
           <div class="column home__column">
@@ -102,7 +102,7 @@
           <div class="column is-6 is-offset-1 content home__column">
             <div class="home__inner-content">
               <p class="home__body">We offer independently contracted trainers who have <strong class="home__strong">30+ years of combined experience</strong> in strength training, functional training, overall health and nutrition. Get together with our trainers in one-on-one sessions or find a group class!</p>
-              <router-link to="trainers" class="button"><span>Find a trainer!</span></router-link>
+              <router-link to="trainers" @click="this.logEvent('click', 'Home Content Trainers')" class="button"><span>Find a trainer!</span></router-link>
             </div>
           </div>
           <div class="column home__column">

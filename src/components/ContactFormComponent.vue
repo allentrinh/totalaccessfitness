@@ -1,6 +1,6 @@
 <template>
   <div class="form">
-    <form method="post" action="contact" name="contact" class="form__form" netlify-honeypot="bot-field">
+    <form method="post" action="contact" @click="this.logEvent('click', 'Contact Form Submit')" name="contact" class="form__form" netlify-honeypot="bot-field">
       <input type="hidden" name="bot-field">
       <fieldset>
         <div class="field">

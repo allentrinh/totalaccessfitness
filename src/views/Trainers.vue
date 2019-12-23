@@ -12,7 +12,7 @@
             <div class="trainers">
               <div v-for="(trainer, key) in trainers" class="trainers__trainer" :key="key">
                 <div class="trainers__wrapper">
-                  <img :src="trainer.photo" class="trainers__image" :alt="fullName(trainer) + '\'s Profile Picture'">
+                  <!-- <img :src="trainer.photo" class="trainers__image" :alt="fullName(trainer) + '\'s Profile Picture'"> -->
                   <div class="trainers__content">
                     <h3 class="trainers__heading">{{ fullName(trainer) }}</h3>
                     <ul class="trainers__social" v-if="trainer.social.length">
@@ -31,10 +31,10 @@
                     </div>
                   </div>
                   <div class="trainers__footer">
-                    <a :href="'tel:' + cleanPhone(trainer.phone)" class="trainers__phone button trainers__button">
+                    <a :href="'tel:' + cleanPhone(trainer.phone)" @click="this.logEvent('click', 'Trainer Call ' + fullName(trainer))" class="trainers__phone button trainers__button">
                       <span>Call {{ trainer.firstName }}!</span>
                     </a>
-                    <a :href="trainer.website" v-if="trainer.website"
+                    <a :href="trainer.website" v-if="trainer.website" @click="this.logEvent('click', 'Trainer Website ' + fullName(trainer))"
                       class="button button--alt trainers__button trainers__button--ghost" target="_blank">
                       <span>Website <i class="fa fa-external-link trainers__external"></i></span>
                     </a>

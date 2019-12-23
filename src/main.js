@@ -14,6 +14,14 @@ Vue.use(VueGtag, {
   }
 }, router);
 
+Vue.mixin({
+  methods: {
+    logEvent(action, label) {
+      this.$gtag.event(action, { method: label });
+    },
+  },
+});
+
 new Vue({
   router,
   store,

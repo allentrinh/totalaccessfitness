@@ -16,8 +16,8 @@
           </div>
           <div class="column is-9">
             <p class="about__body">Established in 2014, we have strived to provide our city of <em class="about__em">Virginia Beach, VA</em> a better fitness experience. One that doesn't place limits. One that continues to grow with our members. We believe that health and fitness is essential to reaching any individual's full potential in every aspect of their lives, and we love hearing the success stories that our members bring us when they reach new peaks!</p>
-            <p class="about__body">Since opening our doors in our humble first location near the Virginia Beach Court Houses, we have moved and expanded our establishment to <em class="about__em">5,465 square feet</em> to meet the needs of our evergrowing community. You can find all the cardio, strength, and functional training equipment you need to reach your goals and keep you on track!</p>
-            <a :href="$store.state.joinUrl" class="button" target="_blank"><span>Become a member today!</span></a>
+            <p class="about__body">Since opening our doors in our humble first location near the Virginia Beach Court Houses, we have moved and expanded our establishment to <em class="about__em">5,500 square feet</em> to meet the needs of our evergrowing community. You can find all the cardio, strength, and functional training equipment you need to reach your goals and keep you on track!</p>
+            <a :href="$store.state.joinUrl" @click="this.logEvent('click', 'About Become a Member')" class="button" target="_blank"><span>Become a member today!</span></a>
           </div>
         </div>
       </div>
@@ -49,8 +49,8 @@
             <div class="mission__content">
               <h2 class="mission__heading">Our Mission</h2>
               <p class="mission__body">To provide a genuine and supportive atmosphere to help you reach your fitness goals without the gimmicks of big corporate enterprises. We strive to keep our club clean, functioning, and open 24 hours a day, 7 days a week, holidays included!</p>
-              <router-link to="location" class="button mission__button"><span>Check out our location</span></router-link>
-              <a :href="$store.state.joinUrl" class="button button--alt mission__button" target="_blank"><span>See our current specials!</span></a>
+              <router-link to="location" @click="this.logEvent('click', 'About Locations')" class="button mission__button"><span>Check out our location</span></router-link>
+              <a :href="$store.state.joinUrl" @click="this.logEvent('click', 'About Specials')" class="button button--alt mission__button" target="_blank"><span>See our current specials!</span></a>
             </div>
           </div>
         </div>

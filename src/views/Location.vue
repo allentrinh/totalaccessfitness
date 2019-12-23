@@ -14,7 +14,7 @@
         <div class="column has-text-centered content iframe__content">
           <h2 class="iframe__heading">Check out our virtual tour!</h2>
           <p class="iframe__body">Tour the gym without leaving your living room or come visit us in person!</p>
-          <a :href="$store.state.directionsLink" class="button button--ghost" target="_blank"><span>Get directions</span></a>
+          <a :href="$store.state.directionsLink" @click="this.logEvent('click', 'Location Get Directions')" class="button button--ghost" target="_blank"><span>Get directions</span></a>
         </div>
         <div class="column iframe__no-padding">
           <div class="iframe__container">
@@ -55,8 +55,8 @@
             <div class="outro__content">
               <h2 class="outro__heading">Ready to see us in person?</h2>
               <p class="outro__body">We're excited to meet you! If you're still unsure, feel free to contact us or check out our online specials!</p>
-              <router-link to="contact" class="button outro__button"><span>Contact us</span></router-link>
-              <a :href="$store.state.joinUrl" class="button button--alt outro__button" target="_blank"><span>Online specials!</span></a>
+              <router-link to="contact" @click="this.logEvent('click', 'Location Contact Us')" class="button outro__button"><span>Contact us</span></router-link>
+              <a :href="$store.state.joinUrl" @click="this.logEvent('click', 'Location Online Specials')" class="button button--alt outro__button" target="_blank"><span>Online specials!</span></a>
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/scss/styles.scss';
 
 .intro {

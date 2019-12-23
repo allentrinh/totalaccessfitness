@@ -6,7 +6,7 @@
           <button class="navigation__link navigation__link--hidden" aria-hidden="true"></button>
           <ul class="navigation__list">
             <li class="navigation__list-item" v-for="(route, index) in routes" :key="index" v-if="route.name != '404'">
-              <router-link class="navigation__link" :to="route.path">
+              <router-link class="navigation__link" @click="this.logEvent('click', 'Navigation ' + route.name)" :to="route.path">
                 <span>{{ route.name | capitalize }}</span>
               </router-link>
             </li>

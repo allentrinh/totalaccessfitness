@@ -9,7 +9,7 @@
           <SocialListComponent modifier="footer"/>
         </div>
         <div class="column is-3 has-text-right-tablet">
-          <router-link to="contact" class="button button--ghost footer__button">Contact</router-link>
+          <router-link to="contact" @click="this.logEvent('click', 'Footer Contact')" class="button button--ghost footer__button">Contact</router-link>
           <p class="footer__copyright">&copy; {{ year }} {{ $store.state.title }} - All Rights Reserved</p>
         </div>
       </div>

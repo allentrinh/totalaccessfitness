@@ -9,7 +9,7 @@
         </div>
         <div class="column has-text-right">
           <div class="header__actions">
-            <a :href="$store.state.joinUrl" class="header__join-today button" target="_blank">
+            <a :href="$store.state.joinUrl" @click="this.logEvent('click', 'Header Join Today')" class="header__join-today button" target="_blank">
               <span>Join today!</span>
             </a>
             <NavigationButtonComponent/>

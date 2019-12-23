@@ -23,7 +23,14 @@
                   <h2 class="details__label">Give us a call</h2>
                 </div>
                 <div class="column">
-                  <p class="details__body"><a :href="`tel:${$store.state.telephone}`" class="details__link">{{ $store.getters.formattedTelephone }}</a></p>
+                  <p class="details__body">
+                    <a
+                      :href="`tel:${$store.state.telephone}`"
+                      @click="this.logEvent('click', 'Contact Give Us A Call')"
+                      class="details__link">
+                      {{ $store.getters.formattedTelephone }}
+                    </a>
+                  </p>
                 </div>
               </div>
               <div class="columns">
@@ -50,7 +57,11 @@
                           <span itemprop="addressRegion">{{ $store.state.state }}</span>&nbsp;<span itemprop="postalCode">{{ $store.state.zip }}</span>
                         </p>
                       </div>
-                      <a :href="$store.state.directionsLink" class="details__link" target="_blank">View in Google Maps</a>
+                      <a
+                        :href="$store.state.directionsLink"
+                        @click="this.logEvent('click', 'Contact View in Google Maps')"
+                        class="details__link"
+                        target="_blank">View in Google Maps</a>
                     </div>
                   </p>
                 </div>
@@ -90,7 +101,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/scss/styles.scss';
 
 .intro-section {
